@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="story"
+            type="com.prasad.nytimes_mvi.model.Story" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        app:cardCornerRadius="3dp"
+        app:cardElevation="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/half_padding">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingRight="@dimen/half_padding"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:text="@{story.title}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/img_story"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                android:id="@+id/tv_author_name"
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/half_padding"
+                android:textSize="14sp"
+                android:text="@{story.byline}"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/img_story"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
+                tools:text="@tools:sample/full_names" />
+
+            <com.prasad.nytimes_mvi.utils.ResizableImageView
+                android:id="@+id/img_story"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:contentDescription="@string/cd_story"
+                android:scaleType="centerInside"
+                app:svg="@{story.multimedia}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

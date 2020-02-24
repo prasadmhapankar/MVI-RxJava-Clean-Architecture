@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NYTimes-MVI</string>
+    <string name="title_science">Science</string>
+    <string name="title_business">Business</string>
+    <string name="title_movies">Movies</string>
+    <string name="lbl_empty_stories">No Stories</string>
+    <string name="cd_story">Story Image</string>
+</resources>
