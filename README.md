@@ -1,7 +1,7 @@
 # MVI-RxJava-Clean-Architecture
 Exploring Android MVI clean architecture
 
-- This Project uses NY Times Top Stories APIs
+- This Project uses [NY Times Top Stories](https://developer.nytimes.com/docs/top-stories-product/1/overview) APIs 
 - Clean Architecture - MVI on top of MVVM
 
 
