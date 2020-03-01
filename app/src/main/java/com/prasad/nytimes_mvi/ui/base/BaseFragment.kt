@@ -9,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.prasad.nytimes_mvi.mvibase.MviIntent
 import com.prasad.nytimes_mvi.mvibase.MviView
 import com.prasad.nytimes_mvi.mvibase.MviViewState
@@ -20,11 +21,6 @@ abstract class BaseFragment<VB : ViewDataBinding, I : MviIntent, S : MviViewStat
     lateinit var binding: VB
 
     abstract fun initViews()
-
-    /**
-     *  Start the stream by passing [MviIntent] to [MviViewModel]
-     */
-    abstract fun startStream()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +36,8 @@ abstract class BaseFragment<VB : ViewDataBinding, I : MviIntent, S : MviViewStat
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        startStream()
+        super.onMviViewCreated(savedInstanceState)
+       // startStream()
     }
 
     protected fun toast(message: String) =

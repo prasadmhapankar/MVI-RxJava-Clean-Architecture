@@ -15,7 +15,6 @@ import com.prasad.nytimes_mvi.utils.navigate
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ScienceFragment :
     BaseFragment<FragmentScienceBinding, StoryListIntent, ScienceListViewState>(R.layout.fragment_science){
@@ -31,26 +30,21 @@ class ScienceFragment :
 
     private val adapter by inject<StoryAdapter>()
 
-    private val viewModel: ScienceViewModel by viewModel()
+    override val viewModel by inject<ScienceViewModel> ()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         viewModel.statesLiveData.observe(this, Observer { state ->
             println("state: $state")
-            render(state)
+            render(state as ScienceListViewState)
         })
-
 
     }
 
     override fun initViews() {
         setupListView()
     }
-
-    override fun startStream() =
-        // Pass the UI's intents to the ViewModel
-        viewModel.processIntents(intents())
 
     override fun intents(): Observable<StoryListIntent> = Observable.merge(
         initialIntent(),
